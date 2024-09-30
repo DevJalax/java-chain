@@ -9,3 +9,20 @@ spec:
     - port: 7051
   selector:
     app: peer
+
+    # Example Docker Compose for separating endorsers and committers
+version: '2'
+services:
+  peer0:
+    image: hyperledger/fabric-peer
+    environment:
+      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+      
+  peer1:
+    image: hyperledger/fabric-peer
+    environment:
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_ADDRESS=peer1.org2.example.com:7051
+      
+# Ensure that each peer has dedicated resources in your orchestration tool.
