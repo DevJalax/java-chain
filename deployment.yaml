@@ -1,0 +1,11 @@
+# Example Kubernetes service configuration for load balancing
+apiVersion: v1
+kind: Service
+metadata:
+  name: peer-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 7051
+  selector:
+    app: peer
